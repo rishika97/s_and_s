@@ -1,61 +1,41 @@
+import 'dart:developer';
+import 'Counter.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: Hello()
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class Hello extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Hello'),
-          centerTitle: true,
-        ),
-        body: Counter()
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text('S and S',
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.black,
+        ),),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          SizedBox(height: 50),
+          Text('Hello',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black
+          ),
+          ),
+          SizedBox(height: 50),
+          Counter()
+        ],
       ),
     );
   }
 }
 
-class Counter extends StatefulWidget {
-  @override
-  _CounterState createState() => _CounterState();
-}
-class _CounterState extends State<Counter> {
-  int counter = 0;
 
-  void _increment() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  void _decrement() {
-    setState(() {
-      counter--;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        RaisedButton(
-          onPressed: _increment,
-          child: Text('Increment'),
-          padding: EdgeInsets.all(20),
-        ),
-        RaisedButton(
-          onPressed: _decrement,
-          child: Text('Decrement'),
-          padding: EdgeInsets.all(20),
-        ),
-        Text('Count: $counter'),
-      ],
-    );
-  }
-}
