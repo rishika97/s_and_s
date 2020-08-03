@@ -7,7 +7,7 @@ class Counter extends StatefulWidget {
 }
 class _CounterState extends State<Counter> {
   int counter = 0;
-
+rishika
   void _increment() {
     setState(() {
       counter++;
