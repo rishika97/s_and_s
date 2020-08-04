@@ -7,7 +7,7 @@ class Counter extends StatefulWidget {
 }
 class _CounterState extends State<Counter> {
   int counter = 0;
-rishika
+
   void _increment() {
     setState(() {
       counter++;
@@ -26,6 +26,7 @@ rishika
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
+        Text('Count: $counter'),
         RaisedButton(
           onPressed: _increment,
           child: Text('Increment'),
@@ -36,7 +37,6 @@ rishika
           child: Text('Decrement'),
           padding: EdgeInsets.all(20),
         ),
-        Text('Count: $counter'),
       ],
     );
   }
