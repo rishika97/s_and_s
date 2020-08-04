@@ -26,18 +26,21 @@ class Hello extends StatelessWidget {
       body: new Column(
         children: <Widget>[
           SizedBox(height: 50),
-          Text('Hello',
-            style: TextStyle(
-                fontSize: 20,
-                color: Colors.black
-            ),
-          ),
+          First(),
           SizedBox(height: 50),
           Counter()
         ],
       ),
     );
   }
+}
+
+class First extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Text("Hello");
+  }
+
 }
 
 //class Counter extends StatefulWidget {

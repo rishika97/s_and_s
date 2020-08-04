@@ -31,54 +31,42 @@ class _CounterState extends State<Counter> {
       count.add(counter);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        StreamBuilder(
+        StreamBuilder<int>(
             stream: count.stream,
             builder: (BuildContext context, snapshot) {
-              return new Text(
-                snapshot.data.toString(),
-              );
+              return new Count(snapshot.data);
             }),
-        Button(),
+        Button((){
+          _increment();
+        },(){
+          _decrement();
+        }),
       ],
     );
   }
 }
 
-class Button extends StatefulWidget {
-  @override
-  _ButtonState createState() => _ButtonState();
+class Count extends StatelessWidget{
+  final int count;
+  Count(this.count);
+  Widget build(BuildContext context) {
+    return Text(count.toString());
+  }
 }
 
-class _ButtonState extends State<Button> {
-  int counter = 0;
-  StreamController<int> count;
+class Button extends StatelessWidget {
+  Function() _increment;
+  Function() _decrement;
+  Button(this._increment, this._decrement);
 
-  @override
-  void initState() {
-    super.initState();
-    count = new StreamController<int>();
-    count.add(0);
-  }
 
-  void _increment() {
-    setState(() {
-      counter++;
-      count.add(counter);
-    });
-  }
-
-  void _decrement() {
-    setState(() {
-      counter--;
-      count.add(counter);
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return Column(
